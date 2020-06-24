@@ -16,12 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.FileWriter;
+
 /**
  * Servlet implementation class LoadServletTest
  */
 @WebServlet("/LoadServletTest")
 public class LoadServletTest extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,44 +33,60 @@ public class LoadServletTest extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
 
-		doPost(request, response);
-	}
+        doPost(request, response);
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("content-type", "text/html;charset=utf-8");
-		PrintWriter pw= response.getWriter();
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("content-type", "text/html;charset=utf-8");
+        PrintWriter pw= response.getWriter();
 
 
-		Database database;
-		try {
-			database = new Database("root", "a9988765");
-			System.out.println(database.count());
-			int max=database.tab_id_max();
-			List<String> css=database.cssPwPrintnew(max);
-			for(String eachcss:css)
-			{
-				pw.println(eachcss);
-			}
-			List<String> css1=database.cssPwPrintdiv(max);
-			for(String eachcss1:css1)
-			{
-				pw.println(eachcss1);
-			}
+        Database database;
+        try {
+        	FileWriter writer = new FileWriter("output.txt");
 
+
+
+            database = new Database("root", "a9988765");
+            System.out.println(database.count());
+            int max=database.tab_id_max();
+            List<String> css=database.cssPwPrintnew(max);
+            for(String eachcss:css)
+            {
+                pw.println(eachcss);
+                writer.write(eachcss + System.lineSeparator());
+            }
+            List<String> css2=database.cssBodyAll(max);
+            for(String eachcss2:css2)
+            {
+                pw.println(eachcss2);
+                writer.write(eachcss2 + System.lineSeparator());
+            }
+
+            writer.close();
+            database.close();
+//			List<String> css1=database.cssPwPrintdiv(max);
+//			for(String eachcss1:css1)
+//			{
+//				pw.println(eachcss1);
+//			}
+
+
+//
 //			ObjectMapper mapper = new ObjectMapper();
 //			List<Map<String, String>> mapRulesList = new ArrayList<Map<String, String>>();
 //			List<Map<String, String>> mapOptionsList = new ArrayList<Map<String, String>>();
@@ -94,72 +112,124 @@ public class LoadServletTest extends HttpServlet {
 //				}
 //			}
 
-			int count=database.count();
-			for(int i=1;i<=count;i++) {
-				if(database.newtest(i)<database.newtest(i+1))
-				{
-					pw.println("<div>");
-				}else if(database.newtest(i)==database.newtest(i+1))
-				{
-					switch(database.getType(i))
-					{
-					case "label" :
-						pw.println("<label>"+database.getRules(i)+"</label>");
-						break;
-					case "singleCheck":
-						pw.println("<input type=\"radio\">");
-						break;
-					case "input":
-						pw.println("<input value=\"" + i + "\">");
-						break;
-					case "multiCheck":
-						pw.println("<input type=\"checkbox\">");
-						break;
-					default :
-						pw.println("<p>-----------</p>");
-						break;
-					}
-				}else if(database.newtest(i)>database.newtest(i+1))
-				{
-					switch(database.getType(i))
-					{
-					case "label" :
-						pw.println("<label>"+database.getRules(i)+"</label>");
-						break;
-					case "singleCheck":
-						pw.println("<input type=\"radio\">");
-						break;
-					case "input":
-						pw.println("<input value=\"" + i + "\">");
-						break;
-					case "multiCheck":
-						pw.println("<input type=\"checkbox\">");
-						break;
-					default :
-						pw.println("<p>-----------</p>");
-						break;
-					}
-					for (int j=0;j<(database.newtest(i)-database.newtest(i+1));j++)
-					pw.println("</div>");
-				}
-			}
+//			int count=database.count();
+//			for(int i=1;i<=count;i++) {
+//				if(database.newtest(i)<database.newtest(i+1))
+//				{
+//					pw.println("<div>");
+//				}else if(database.newtest(i)==database.newtest(i+1))
+//				{
+//					switch(database.getType(i))
+//					{
+//					case "label" :
+//						pw.println("<label>"+database.getRules(i)+"</label>");
+//						break;
+//					case "singleCheck":
+//						pw.println("<input type=\"radio\">");
+//						break;
+//					case "input":
+//						pw.println("<input value=\"" + i + "\">");
+//						break;
+//					case "multiCheck":
+//						pw.println("<input type=\"checkbox\">");
+//						break;
+//					default :
+//						pw.println("<p>-----------</p>");
+//						break;
+//					}
+//				}else if(database.newtest(i)>database.newtest(i+1))
+//				{
+//					switch(database.getType(i))
+//					{
+//					case "label" :
+//						pw.println("<label>"+database.getRules(i)+"</label>");
+//						break;
+//					case "singleCheck":
+//						pw.println("<input type=\"radio\">");
+//						break;
+//					case "input":
+//						pw.println("<input value=\"" + i + "\">");
+//						break;
+//					case "multiCheck":
+//						pw.println("<input type=\"checkbox\">");
+//						break;
+//					default :
+//						pw.println("<p>-----------</p>");
+//						break;
+//					}
+//					for (int j=0;j<(database.newtest(i)-database.newtest(i+1));j++)
+//					pw.println("</div>");
+//				}
+//			}
 
 
-		} catch (ClassNotFoundException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
+        } catch (ClassNotFoundException e) {
+            // TODO 自動生成された catch ブロック
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO 自動生成された catch ブロック
+            e.printStackTrace();
+        }
 
-		pw.println("</body>");
-		pw.println("</html>");
-		pw.flush();
-		pw.close();
+//		pw.println("</body>");
+//		pw.println("</html>");
+        pw.flush();
+        pw.close();
 
 
 //		doGet(request, response);
-	}
+
+//        pw.println("<html>");
+//        pw.println("<head>");
+//        pw.println("<title>title</title>");
+//        pw.println("</head>");
+//        pw.println("<body>");
+//        Database database;
+//        try {
+//            database = new Database("root", "a9988765");
+//            ObjectMapper mapper = new ObjectMapper();
+//            List<Map<String, String>> mapRulesList = new ArrayList<Map<String, String>>();
+//            List<Map<String, String>> mapOptionsList = new ArrayList<Map<String, String>>();
+//            ArrayList<List<String>> field_list = database.getAllRulesNewSingle(1,1);
+//            List<String> rulesList = field_list.get(0);
+//            List<String> options_List = field_list.get(1);
+//            int i=0;
+//            for (String eachRules : rulesList) {
+//                Map<String, String> mapRules = new HashMap<String, String>();
+//                if (eachRules != null) {
+//                    mapRules = JsonUtil.json2Map(eachRules);
+//                    mapRulesList.add(mapRules);
+//                    i++;
+//                    System.out.println(i);
+//
+//                } else {
+//                    mapRulesList.add(mapRules);
+//                    i++;
+//                    System.out.println(i);
+//                }
+//            }
+//            for (String eachOptions : options_List) {
+//                Map<String, String> mapOptions = new HashMap<String, String>();
+//                if (eachOptions != null) {
+//                    mapOptions = JsonUtil.json2Map(eachOptions);
+//                    mapOptionsList.add(mapOptions);
+//                } else {
+//                    mapOptionsList.add(mapOptions);
+//                }
+//            }
+//
+//        } catch (ClassNotFoundException e) {
+//            // TODO 自動生成された catch ブロック
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            // TODO 自動生成された catch ブロック
+//            e.printStackTrace();
+//        }
+//
+//        pw.println("</body>");
+//        pw.println("</html>");
+//        pw.flush();
+//        pw.close();
+    }
 
 }

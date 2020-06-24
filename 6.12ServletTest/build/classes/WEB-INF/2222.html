@@ -1,0 +1,344 @@
+<html>
+<head>
+<title>title</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0
+}
+
+.box {
+	width: 80%;
+	margin: 0px auto;
+	border: 3px solid orange;
+	box-sizing: border-box;
+}
+
+.nav {
+	width: 79.5%;
+	position: fixed;
+	top: 0px;
+	border: 0px solid orange;
+	box-sizing: border-box;
+	background: orange;
+}
+
+.nav>li {
+	list-style: none;
+	width: 16.66%;
+	height: 50px;
+	background: orange;
+	text-align: center;
+	line-height: 50px;
+	float: left;
+}
+
+.nav>.current {
+	background: #ccc;
+}
+
+.content>li {
+	list-style: none;
+	display: none;
+}
+
+.all>.newcontent {
+	width: 100%;
+	height: 800px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+
+.all>div:first-child {
+	margin-top: 47px;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(function() {
+		$("#li1").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div1").offset().top - 49
+			});
+		});
+		$("#li2").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div2").offset().top - 49
+			});
+		});
+		$("#li3").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div3").offset().top - 49
+			});
+		});
+		$("#li4").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div4").offset().top - 49
+			});
+		});
+		$("#li5").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div5").offset().top - 49
+			});
+		});
+		$("#li6").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#div6").offset().top - 49
+			});
+		});
+		$(window).scroll(function() {
+			var offset = $("body").scrollTop();
+			if (offset >= $("#div1").offset().top - 50) {
+				$("#li1").addClass("current");
+				$("#li1").siblings().removeClass("current");
+			}
+			if (offset >= $("#div2").offset().top - 50) {
+				$("#li2").addClass("current");
+				$("#li2").siblings().removeClass("current");
+			}
+			if (offset >= $("#div3").offset().top - 50) {
+				$("#li3").addClass("current");
+				$("#li3").siblings().removeClass("current");
+			}
+			if (offset >= $("#div4").offset().top - 50) {
+				$("#li4").addClass("current");
+				$("#li4").siblings().removeClass("current");
+			}
+			if (offset >= $("#div5").offset().top - 50) {
+				$("#li5").addClass("current");
+				$("#li5").siblings().removeClass("current");
+			}
+			if (offset >= $("#div6").offset().top - 50) {
+				$("#li6").addClass("current");
+				$("#li6").siblings().removeClass("current");
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="nav">
+			<li class="current" id="li1">Tag1</li>
+			<li id="li2">Tab2</li>
+			<li id="li3">Tab3</li>
+			<li id="li4">Tab4</li>
+			<li id="li5">Tab5</li>
+			<li id="li6">Tab6</li>
+		</ul>
+		<div class="all">
+			<div class="newcontent" id="div1"
+				style="border: 3px solid OrangeRed;">
+				<br> <label style="margin: 2px auto;">{"rules":[]}</label><br>
+						<input style="margin: 2px auto;" type="radio"><br>
+								<div
+									style="border: 3px solid Yellow; width: 80%; overflow: hidden; margin: 0px auto;">
+									<input style="margin: 2px auto;" value="1,4"><br>
+								</div>
+								<p>-----------</p> <input style="margin: 2px auto;" value="1,6"
+								title="
+" required title="
+"
+								title="
+tipRule is 最少请输入5个字符，最多可输入25000字符,
+"
+								maxlength="25000" title="
+maxLengthRule is 25000,
+"
+								minlength="5" title="
+minLengthRule is 5,
+"><br>
+										<input style="margin: 2px auto;" value="1,7"><br>
+												<input style="margin: 2px auto;" value="1,8"><br>
+														<input style="margin: 2px auto;" value="1,9"
+														title="
+tipRule is 出境购商家不支持以下提取方式：邮寄,
+"><br>
+																<input style="margin: 2px auto;" value="1,10" title="
+"><br>
+																		<input style="margin: 2px auto;" type="radio"><br>
+																				<div
+																					style="border: 3px solid Blue; width: 80%; overflow: hidden; margin: 0px auto;">
+																					<input style="margin: 2px auto;" type="checkbox"><br>
+																				</div>
+			</div>
+			<div class="newcontent" id="div2" style="border: 3px solid Yellow;">
+				<br>
+					<div
+						style="border: 3px solid Green; width: 80%; overflow: hidden; margin: 0px auto;">
+						<p>-----------</p>
+						<input style="margin: 2px auto;" value="2,3"><br>
+					</div> <input style="margin: 2px auto;" value="2,4" type="url" title="
+"><br>
+							<input style="margin: 2px auto;" value="2,5" type="url"
+							title="
+"><br> <input style="margin: 2px auto;"
+									value="2,6" type="number" min="0" step="0.001" title="
+"
+									required title="
+"
+									title="
+tipRule is 填写价格请严格遵守法律规定、遵循市场规律，确保可以提供该价格的合法依据或可供比较的出处，不得虚构原价,
+"
+									title="
+tipRule is 为避免价格变动引发的违规，请谨慎输入价格。<a class=&apos;wanxiang-knowledge&apos; data-knowledge=&apos;13409655&apos; href=&apos;//www.tmall.com&apos; target=&apos;_blank&apos;>查看天猫价格规范</a>,
+"
+									title="
+tipRule is 商品价格应是销售属性表中库存不为0的SKU价格之一,
+"
+									max="100000000.00" title="
+maxValueRule is 100000000.00,
+"
+									min="0.00" title="
+minValueRule is 0.00,
+"
+									pattern="([0-9]{0,9})(.[0-9]{0,2})?" title="
+"
+									title="
+tipRule is 海外商家发布天猫国际商品不能低于1元,
+"
+									title="
+tipRule is 商品价格必须在SKU表中所填最高与最低价格范围区间内,
+"><br>
+											<input style="margin: 2px auto;" value="2,7" type="number"
+											min="0" title="
+" required title="
+"
+											title="
+tipRule is 请认真填写。无货空挂，可能引起投诉与退款。,
+"
+											max="2147483647" title="
+maxValueRule is 2147483647,
+"
+											min="0" title="
+minValueRule is 0,
+"
+											pattern="([1-9][0-9]{0,10}|[0-9])" title="
+"><br>
+													<input style="margin: 2px auto;" value="2,8" title="
+"><br>
+															<div
+																style="border: 3px solid Yellow; width: 80%; overflow: hidden; margin: 0px auto;">
+																<input style="margin: 2px auto;" type="checkbox"><br>
+																		<input style="margin: 2px auto;" type="radio"><br>
+																				<input style="margin: 2px auto;" value="2,12"
+																				tpye="text" title="
+"><br> <input
+																						style="margin: 2px auto;" value="2,13"
+																						type="number" min="0" title="
+"><br>
+																								<input style="margin: 2px auto;" type="checkbox"><br>
+																										<input style="margin: 2px auto;" value="2,15"><br>
+															</div>
+															<p>-----------</p>
+			</div>
+			<div class="newcontent" id="div3" style="border: 3px solid Gold;">
+				<br> <input style="margin: 2px auto;" value="3,1" tpye="text"
+					title="
+" required title="
+"
+					title="
+tipRule is <img src=&apos;//img.alicdn.com/tps/i1/TB1jmZSFVXXXXbTXpXXyaz1LpXX-500-350.png&apos;/>,
+"
+					title="
+tipRule is 品牌+商品名称+卖点,
+" maxlength="20"
+					title="
+maxLengthRule is 20,
+"><br>
+							<div
+								style="border: 3px solid OrangeRed; width: 80%; overflow: hidden; margin: 0px auto;">
+								<input style="margin: 2px auto;" type="radio"><br>
+							</div>
+							<div
+								style="border: 3px solid Gold; width: 80%; overflow: hidden; margin: 0px auto;">
+								<p>-----------</p>
+								<input style="margin: 2px auto;" value="3,6"><br>
+							</div>
+			</div>
+			<div class="newcontent" id="div4" style="border: 3px solid Navy;">
+				<br>
+					<div
+						style="border: 3px solid Green; width: 80%; overflow: hidden; margin: 0px auto;">
+						<p>-----------</p>
+						<p>-----------</p>
+						<p>-----------</p>
+						<input style="margin: 2px auto;" value="4,5"><br>
+					</div>
+					<div
+						style="border: 3px solid Blue; width: 80%; overflow: hidden; margin: 0px auto;">
+						<p>-----------</p>
+						<input style="margin: 2px auto;" value="4,8" type="url" title="
+"><br>
+								<input style="margin: 2px auto;" value="4,9" type="url"
+								title="
+"><br> <input style="margin: 2px auto;"
+										value="4,10" type="url" title="
+"><br> <input
+												style="margin: 2px auto;" value="4,11"><br>
+					</div>
+					<div
+						style="border: 3px solid Blue; width: 80%; overflow: hidden; margin: 0px auto;">
+						<input style="margin: 2px auto;" value="4,13" type="url"
+							title="
+"><br> <input style="margin: 2px auto;"
+								value="4,14" type="url" title="
+"><br> <input
+										style="margin: 2px auto;" value="4,15"><br>
+					</div> <input style="margin: 2px auto;" value="4,16" required title="
+"><br>
+							<input style="margin: 2px auto;" type="radio"><br> <input
+									style="margin: 2px auto;" type="radio"><br>
+											<div
+												style="border: 3px solid Green; width: 80%; overflow: hidden; margin: 0px auto;">
+												<p>-----------</p>
+												<input style="margin: 2px auto;" value="4,21"><br>
+											</div> <input style="margin: 2px auto;" value="4,22" required
+											title="
+"><br> <input
+													style="margin: 2px auto;" value="4,23" required title="
+"><br>
+															<input style="margin: 2px auto;" value="4,24"
+															title="
+tipRule is 必填，跨境申报的商品，需要提供商品的原产地信息,
+"
+															title="
+"><br> <input
+																	style="margin: 2px auto;" value="4,25" required
+																	title="
+"
+																	title="
+tipRule is <a target=&apos;_blank&apos; class=&apos;wanxiang-knowledge&apos; data-knowledge=&apos;13128397&apos; href=&apos;//rule.tmall.com/tdetail-629.htm&apos;>[新品打标逻辑]</a><a target=&apos;_blank&apos; class=&apos;wanxiang-knowledge&apos; data-knowledge=&apos;13129610&apos; href=&apos;https://maowo.tmall.com/discussion.htm?spm=a2227.7147689.0.0.OZJ6w5&id=45452&circleId=45&apos;>&nbsp;&nbsp;&nbsp;&nbsp;[新品打标结果查询]</a>,
+"><br>
+																			<input style="margin: 2px auto;" value="4,26"
+																			title="
+tipRule is 商品如果设置为在淘宝和天猫不显示，在淘宝、天猫的主站和后台均不显示该商品。（不设置默认为显示）,
+"><br>
+																					<input style="margin: 2px auto;" value="4,27"
+																					title="
+tipRule is 商品如果设置为在淘宝和天猫不显示，在淘宝、天猫的主站和后台均不显示该商品。（不设置默认为显示）,
+"><br>
+																							<input style="margin: 2px auto;" value="4,28"><br>
+			</div>
+			<div class="newcontent" id="div5" style="border: 3px solid Blue;">
+				<br> <input style="margin: 2px auto;" value="5,1" title="
+"
+					title="
+"><br>
+							<p>-----------</p> <input style="margin: 2px auto;" value="5,3"><br>
+									<div
+										style="border: 3px solid Gold; width: 80%; overflow: hidden; margin: 0px auto;">
+										<input style="margin: 2px auto;" type="checkbox"><br>
+									</div>
+			</div>
+			<div class="newcontent" id="div6" style="border: 3px solid Green;">
+				<br> <input style="margin: 2px auto;" value="6,1"
+					title="
+tipRule is 凡使用支付宝服务付款购买本店商品，若存在质量问题或与描述不符，本店将主动提供退换货服务并承担来回邮费,
+"><br>
+							<input style="margin: 2px auto;" type="radio"><br>
+			</div>
+		</div>
+</body>
+</html>

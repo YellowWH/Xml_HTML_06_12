@@ -20,10 +20,10 @@ public class test {
 //			System.out.println(database.getnotcomplex(i));
 //			if(database.getnotcomplex(i))
 //		}
-		for(int i=1; i<j+1;i++)
-		{
-			System.out.println(database.newtest(i));
-		}
+//		for(int i=1; i<j+1;i++)
+//		{
+//			System.out.println(database.newtest(i));
+//		}
 
 		System.out.println(database.tab_id_max());
 //
