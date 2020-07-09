@@ -64,12 +64,7 @@ public class LoadServletTest extends HttpServlet {
             database = new Database("root", "a9988765");
             System.out.println(database.count());
             int max=database.tab_id_max();
-            List<String> css=database.cssPwPrintnew(max);
-            for(String eachcss:css)
-            {
-                pw.println(eachcss);
-                writer.write(eachcss + System.lineSeparator());
-            }
+
             List<String> css2=database.cssBodyAll(max);
             for(String eachcss2:css2)
             {
